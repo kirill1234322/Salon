@@ -1,0 +1,76 @@
+﻿<Window x:Class="Salon.Views.zapisClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:myproj="clr-namespace:Salon.Converter"
+        xmlns:local="clr-namespace:Salon.Views"
+        mc:Ignorable="d"
+        Icon="/Resources/beauty_logo (1).ico"
+        Title="Запись клиента" Height="450" Width="800">
+    <Window.Resources>
+        <myproj:DateConvertPicker x:Key="dateConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Название" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="namebluda"  Height="35" Width="186" Cursor="IBeam" VerticalAlignment="Bottom" IsReadOnly="True"/>
+
+        <Label Content="Длительность" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1"  x:Name="nameingrid" Height="35" Width="186" Cursor="IBeam" VerticalAlignment="Bottom" IsReadOnly="True"/>
+        <Label Content="Клиенты" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="comboclient"  HorizontalAlignment="Center"   Height="35" Width="186" VerticalAlignment="Bottom"  Background="#FFE1E4FF">
+            
+        </ComboBox>
+        <Label Content="Дата оказания услуги" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Calendar Grid.RowSpan="3" Grid.Column="2" VerticalAlignment="Bottom" x:Name="calendar1"  />
+        <TextBox x:Name="txb_date" Width="180" Height="55" VerticalContentAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" HorizontalContentAlignment="Center"
+                 FontSize="32" IsReadOnly="True" 
+                 Text="{Binding Path=Time, Converter={StaticResource dateConverter}}">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="txb_border" Background="{TemplateBinding Background}" CornerRadius="4" 
+                            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="0,0,30,0"/>
+                            <RepeatButton x:Name="up" Width="28" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Click="RepeatButton_Click">
+                                <Path Fill="Black" Data="M 0,8 L 4,0 L 8,8 Z"/>
+                            </RepeatButton>
+                            
+                            <RepeatButton x:Name="down" Width="28" Height="22" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="RepeatButton_Click" >
+                                <Path Fill="Black" Data="M 0,0 L 8,0 L4,8 Z"/>
+                            </RepeatButton>
+                            
+                            <RepeatButton x:Name="upH" Width="28" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Click="RepeatButtonHour_Click" >
+                                <Path Fill="Black" Data="M 0,8 L 4,0 L 8,8 Z"/>
+                            </RepeatButton>
+                            
+                            <RepeatButton  x:Name="downH" Width="28" Height="22" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="RepeatButtonHour_Click">
+                                <Path Fill="Black" Data="M 0,0 L 8,0 L4,8 Z"/>
+                            </RepeatButton>
+                            
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+        <Label Grid.Row="3" Grid.Column="2" x:Name="labeltime"/>
+
+        <Button  Background="#FFE1E4FF" Grid.Row="5" Grid.Column="1" Content="Добавить"  HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="55" Width="186" Click="additem" Cursor="Hand"/>
+
+
+    </Grid>
+</Window>

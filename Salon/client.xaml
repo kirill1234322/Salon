@@ -1,0 +1,142 @@
+﻿<Window x:Class="Salon.client"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon" xmlns:converter="clr-namespace:Salon.Converter"
+        mc:Ignorable="d"
+        Icon="/Resources/beauty_logo (1).ico"
+        Title="Режим клиента" Height="650" Width="1000" ResizeMode="NoResize">
+    <Window.Resources>
+        <converter:DiscountToVisibilityConverter x:Key="DiscountConverter" />
+        <converter:DiscountToStrikelineConverter x:Key="DecorationConverter" />
+        <converter:BackgroundConvert x:Key="BackGround" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+       
+            <StackPanel Grid.ColumnSpan="3" Grid.Row="0"  Background="#FFE1E4FF">
+            <Image Source="/Resources/beauty_logo.png" Width="130" Height="60" HorizontalAlignment="Left"/>
+            <Label Content="Услуги" FontFamily="Tahoma" FontSize="18" Width="194" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0 -45 0 0"/>
+        </StackPanel>
+            
+        
+        <GroupBox   Grid.ColumnSpan="2" Grid.Row="1">
+            <ListBox x:Name="list">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Width="auto" Height="100" Margin="10" Orientation="Horizontal" >
+                            <Border BorderThickness="1" BorderBrush="Black">
+                                <Image Height="80" Width="80" Source="{Binding mainImagePathsp}" HorizontalAlignment="Left" />
+                            </Border>
+
+                            <StackPanel Margin="13" Orientation="Vertical"  Background="{Binding Discount, Converter={StaticResource BackGround}}">
+                                <TextBlock Text="{Binding Title}" FontSize="17" FontFamily="Tahoma"/>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding Cost, StringFormat={}{0:F0} руб  }" TextDecorations="{Binding Discount,
+                                        Converter={StaticResource DecorationConverter}}"  FontSize="17" FontFamily="Tahoma">
+                                     
+                                    </TextBlock>
+                                    <TextBlock Text=" "/>
+                                    <TextBlock  Visibility="{Binding Discount,Converter={StaticResource DiscountConverter}}"
+                                          Foreground="Black"
+                                          FontSize="17" FontFamily="Tahoma">
+                                         <Run Text="{Binding CostDisc, Mode=OneWay}" FontFamily="Tahoma" />
+                                         <Run Text=" руб " FontFamily="Tahoma" />
+                                    </TextBlock>
+
+                                    <TextBlock Text= " за " FontSize="17" FontFamily="Tahoma"/>
+
+
+                                    <TextBlock Text="{Binding DurationInSeconds}" FontSize="17" FontFamily="Tahoma"/>
+                                    <TextBlock Text= " минут " FontSize="17" FontFamily="Tahoma"/>
+                                                                     
+
+
+
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock
+                              Visibility="{Binding Discount,Converter={StaticResource DiscountConverter}}"
+                              Foreground="#FFFF4A6D"
+                                        
+                              FontSize="17" FontFamily="Tahoma">
+   
+                              <Run Text="* скидка " FontFamily="Tahoma"/>
+                              <Run Text="{Binding Discount}" />
+                                    <Run Text=" %  " FontFamily="Tahoma"/>
+                                    </TextBlock>
+
+                                </StackPanel>
+
+
+
+
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+        <StackPanel  Grid.Column="2" Grid.Row="2"  x:Name="cl1">
+            <StackPanel>
+                <Label Content="Поиск" FontFamily="Tahoma" FontSize="16" />
+                <TextBlock/>
+                <TextBox x:Name="text" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="2"  FontFamily="Tahoma" FontSize="13" TextChanged="text_TextChanged"/>
+                <TextBlock/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Сортировка по цене" FontFamily="Tahoma" FontSize="16" />
+                <TextBlock/>
+                <ComboBox SelectionChanged="sortirovka" x:Name="combo" FontFamily="Tahoma" Width="120" HorizontalAlignment="Left" Background="#FFE1E4FF">
+                    <ComboBoxItem Content="Нет"/>
+                    <ComboBoxItem Content="По возрастанию"/>
+                    <ComboBoxItem Content="По убыванию"/>
+                </ComboBox>
+                <TextBlock/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Фильтрация по скидке" FontFamily="Tahoma" FontSize="16" Background="#FFE1E4FF"/>
+                <TextBlock/>
+                <ComboBox SelectionChanged="filtr" x:Name="comboproz" FontFamily="Tahoma" Width="120" HorizontalAlignment="Left">
+                    <ComboBoxItem Content="Нет" />
+                    <ComboBoxItem Content="0-5%" />
+                    <ComboBoxItem Content="5-15%"/>
+                    <ComboBoxItem Content="15-30%"/>
+                    <ComboBoxItem Content="30-70%"/>
+                    <ComboBoxItem Content="70-100%"/>
+                </ComboBox>
+                <TextBlock/>
+                <TextBlock Text="Количество записей: " FontFamily="Tahoma" FontSize="16"/>
+            </StackPanel>
+            <TextBlock/>
+            <StackPanel Orientation="Horizontal" >
+
+                <Label Height="25" Width="30" x:Name="bindcolvo" HorizontalContentAlignment="Center" FontFamily="Tahoma" />
+                <TextBlock Text=" из " Background="Transparent" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma"/>
+                <Label x:Name="allcolvo" Height="25" Width="30" HorizontalContentAlignment="Center" FontFamily="Tahoma"/>
+                <TextBlock/>
+                
+               
+            </StackPanel>
+
+            <Button  Content="Выход"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Height="45" Width="156" Click="exit" Cursor="Hand"  Background="#FFFF4A6D"/>
+
+
+
+
+        </StackPanel>
+    </Grid>
+</Window>

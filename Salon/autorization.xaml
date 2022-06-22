@@ -1,0 +1,27 @@
+﻿<Window x:Class="Salon.autorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schec:\users\acer\desktop\salon\autorization.xaml
+c:\users\acer\desktop\salon\autorization.xaml.cs
+mas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon"
+        mc:Ignorable="d"
+        Icon="/Resources/beauty_logo (1).ico"
+        Title="Авторизация" Height="350" Width="500" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" VerticalContentAlignment="Bottom" HorizontalAlignment="Center" FontFamily="Tahoma" FontSize="16" Content="Введите пароль"/>
+        <PasswordBox x:Name="pass" Grid.Row="1" Grid.ColumnSpan="2"   BorderBrush="#FFFF4F6D" BorderThickness="2" Width="170" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Click="open" Grid.Row="1" Grid.Column="0" Content="Войти" FontFamily="Tahoma" FontSize="16" Width="110" Height="50" Background="#FFE1E4FF"/>
+        <Button Click="exit" Grid.Row="1" Grid.Column="1" Content="Назад" FontFamily="Tahoma" FontSize="16" Width="110" Height="50" Background="#FFE1E4FF"/>
+    </Grid>
+</Window>

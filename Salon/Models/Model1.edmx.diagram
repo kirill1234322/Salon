@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="124b81246dbf4d3d88dcfdf8af78b652" Name="Diagram1">
+        <EntityTypeShape EntityType="SalonDbModel.Client" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.ClientService" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.Gender" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.ProductSale" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.Service" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.ServicePhoto" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDbModel.Tag" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="SalonDbModel.FK_client_b_import_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ClientService_client_b_import" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ClientService_servifdce_b_import" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.FK_ServicePhoto_servifdce_b_import" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.AttachedProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonDbModel.TagOfClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

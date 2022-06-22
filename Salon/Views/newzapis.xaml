@@ -1,0 +1,101 @@
+﻿<Page x:Class="Salon.Views.newzapis"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Salon.Views"
+      xmlns:converters="clr-namespace:Salon.Converter"
+      mc:Ignorable="d" 
+     
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="newzapis">
+    <Page.Resources>
+
+        <converters:TimeConvert x:Key="TimeConvert" />
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+       
+        
+       
+        <GroupBox Grid.Column="1" Grid.Row="1">
+         
+            <ListBox x:Name="listnew">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Width="auto" Height="210"  Orientation="Horizontal">
+
+                           
+                            <StackPanel Margin="13" Orientation="Vertical"  >
+
+                                <TextBlock Text="Название" FontSize="17" FontFamily="Tahoma">
+                                <Run Text=": "/>
+                                <Run Text="{Binding Service.Title}"/>
+
+                                </TextBlock>
+                                <TextBlock Text="Фамилия" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                 <Run Text="{Binding Client.FirstName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Имя" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                   <Run Text="{Binding  Client.LastName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Отчество" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                <Run Text="{Binding  Client.Patronymic}"/>
+                                </TextBlock>
+                                <TextBlock Text="Email" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                  <Run Text="{Binding  Client.Email}"/>
+
+                                </TextBlock>
+                                <TextBlock Text="Номер" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                  <Run Text="{Binding  Client.Phone}"/>
+
+                                </TextBlock>
+                                <TextBlock Text="Дата и время начала" FontSize="17" FontFamily="Tahoma">
+                                 <Run Text=": "/>
+                                  <Run Text="{Binding StartTime, StringFormat={}{0:dd.MM.yyyy H:mm }}"/>
+                                  
+ 
+                                </TextBlock>
+                                <TextBlock Text="До начала: " FontSize="17" FontFamily="Tahoma">
+                               
+
+                                </TextBlock>
+
+                                <TextBlock 
+                                    FontFamily="Tahoma"
+                                    FontSize="17"
+                                    VerticalAlignment="Center"
+                                    Foreground="{Binding TimeDoNahala,
+                                       Converter={StaticResource TimeConvert}}"
+                                    Text="{Binding TimeDoNahala,StringFormat={}{0:dd} день {0:hh} час(ов) {0:mm} минут(а)}">
+                                </TextBlock>
+
+
+
+
+
+
+
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+       
+    </Grid>
+</Page>
